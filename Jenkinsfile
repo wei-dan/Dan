@@ -23,7 +23,7 @@ pipeline {
 		}
 		stage('Deploy') {
 			steps {
-				sh "systemctl restart dan"
+				sh "sudo systemctl restart dan"
 			}
 		}
 	}
