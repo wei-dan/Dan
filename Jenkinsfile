@@ -1,11 +1,6 @@
 pipeline {
 	agent any
-	triggers {
-		githubPush()
-	}
 	environment {
-		DOTNET_ROOT = tool name: 'dotnet-sdk', type: 'com.microsoft.jenkins.dotnet.DotNetSDK'
-		DEPLOY_PATH = '/usr/projects/dan'
 	}
 	stages {
 		stage('Checkout') {
@@ -15,22 +10,22 @@ pipeline {
 	  	}
 		stage('Restore') {
 	 		steps {
-				sh '${DOTNET_ROOT}/dotnet restore'
+				sh 'dotnet restore'
 			}
 		}
 	  	stage('Build') {
 	      		steps {
-		  		sh '${DOTNET_ROOT}/dotnet build --configuration Release'
+		  		sh 'dotnet build --configuration Release'
 	      		}
 		}
 		stage('Publish') {
 			steps {
-				sh '${DOTNET_ROOT}/dotnet publish --configuration Release --output ./publish'
+				sh 'dotnet publish --configuration Release --output /usr/projects/dan/publish'
 			}
 		}
 		stage('Deploy') {
 			steps {
-			
+				sh "systemctl restart dan"
 			}
 		}
 	}
