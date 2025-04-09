@@ -4,5 +4,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="2.1.6" />
+	  <PackageReference Include="OrchardCore.Commerce" Version="3.0.0" />
 	</ItemGroup>
 </Project>
