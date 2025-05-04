@@ -4,8 +4,8 @@ pipeline {
     stage('Checkout') {
       steps {
           git branch: 'main', url: 'https://github.com/wei-dan/Dan.git'
-            }
       }
+    }
     stage('Restore') {
        steps {
         sh 'dotnet restore ./src/Dan.Web/Dan.Web.csproj'
@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Publish') {
       steps {
-        sh 'dotnet publish ./src/Dan.Web/Dan.Web.csproj --configuration Release --output /usr/projects/dan/publish'
+        sh 'dotnet publish ./src/Dan.Web/Dan.Web.csproj --configuration Release --output /var/www/dan'
       }
     }
     stage('Deploy') {
